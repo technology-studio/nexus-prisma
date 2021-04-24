@@ -23,8 +23,7 @@ export const Foo = objectType({
       resolve: async (parent, args, ctx, info) => (
         ctx.prisma.bar.findMany({
           where: prismify(args.where),
-        },
-        )
+        })
       ),
     })
   },
