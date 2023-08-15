@@ -4,9 +4,6 @@ on:
   push:
     branches:
       - main
-  pull_request:
-    branches:
-      - main
 
 jobs:
   embed-code:
@@ -19,7 +16,7 @@ jobs:
       - uses: technology-studio-forks/markdown-embed-code@v1.1.4
         with:
           markdown: "README.md"
-          token: ${{ secrets.WRITE_PAT }}
+          token: ${{ secrets.GITHUB_TOKEN }}
           message: "chore: synchronizing Readme"
           silent: true
 
