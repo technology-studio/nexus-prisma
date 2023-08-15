@@ -1387,10 +1387,10 @@
   resolved "https://registry.yarnpkg.com/@txo/log-console/-/log-console-3.0.0.tgz#56506a8c6afea9109301ff96520c43815814022d"
   integrity sha512-Dl7dnPMUXRr1JSBysUmzT9/RjMm9FWJdtZ9CXVnh9K4qwpT4fnjDV+GWiHHWAqob47XcE7N98M8rShGmpsukqg==
 
-"@txo/types@^1.6.0":
-  version "1.6.0"
-  resolved "https://registry.yarnpkg.com/@txo/types/-/types-1.6.0.tgz#6c04787668cb5870a6e93757266b0903689bbe6f"
-  integrity sha512-LGTzfGUd9zy3Mabs7zKTq9Fc1c2T0uw9cg2Yg7HanpehHn3s2SzmQBjJzeXID2BiC8OlECj5iW1d2FbfJaT7+Q==
+"@txo/types@^1.6.1":
+  version "1.6.1"
+  resolved "https://registry.yarnpkg.com/@txo/types/-/types-1.6.1.tgz#86ef43d0c2b6266bc4cac2e48f92825e7ce965de"
+  integrity sha512-6Y+EoKeDJtjln/4pO7yLjZD51Iae4UDOenriOzQ1fo//WyEGDAHZWUfEGc9D1KfCbKb6umcwoXJZHlaMWIdGbw==
 
 "@types/babel__core@^7.1.14":
   version "7.20.1"
