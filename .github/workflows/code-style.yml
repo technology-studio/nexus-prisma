@@ -20,4 +20,4 @@ jobs:
       - run: yarn install --frozen-lockfile
       - run: yarn generate:example
       - run: yarn lint
-      - run: tsc --noEmit
+      - run: yarn typescript:check

@@ -26,6 +26,7 @@
     "coverage": "jest --coverage && open coverage/lcov-report/index.html || xdg-open coverage/lcov-report/index.html",
     "compare-boilerplate-version": "./scripts/compare-boilerplate-version.sh",
     "lint": "eslint --format=node_modules/eslint-formatter-pretty --ext .jsx,.js,.ts,.tsx .",
+    "typescript:check": "tsc --noEmit && tsc --noEmit --project example/tsconfig.json",
     "fixcode": "eslint --format=node_modules/eslint-formatter-pretty --ext .jsx,.js,.ts,.tsx . --fix",
     "git-hook": "yarn -s lint-staged",
     "prepare": "husky install && yarn build",
