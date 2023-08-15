@@ -19,7 +19,7 @@ jobs:
       - uses: technology-studio-forks/markdown-embed-code@v1.1.4
         with:
           markdown: "README.md"
-          token: ${{ secrets.GITHUB_TOKEN }}
+          token: ${{ secrets.WRITE_PAT }}
           message: "chore: synchronizing Readme"
           silent: true
 
