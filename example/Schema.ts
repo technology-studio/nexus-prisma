@@ -42,7 +42,7 @@ const Foo = objectType({
       },
       resolve: async (_parent, args, ctx, _info) => {
         const barList = await ctx.prisma.bar.findMany({
-          cursor2: prismifyCursor(args.cursor),
+          cursor: prismifyCursor(args.cursor),
           where: prismify(args.where),
         })
         return barList
