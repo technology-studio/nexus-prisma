@@ -1,19 +1,9 @@
-![npm](https://img.shields.io/npm/v/@txo/nexus-prisma)
-![codecov](https://img.shields.io/codecov/c/github/technology-studio/nexus-prisma)
-# Nexus prisma
+/**
+ * @Author: Rostislav Simonik <rostislav.simonik@technologystudio.sk>
+ * @Date: 2023-08-15T07:08:31+02:00
+ * @Copyright: Technology Studio
+**/
 
-Collection of utils for integration between nexus and prisma.
-
-##### `prismify`
-
-Will deeply remove null types on attributes that are both undefined or null. That ensures a temporary workaround until graphql starts differentiating between optional and nullable types.
-
-##### `prismifyCursor`
-
-It will add compatible typing for the cursor input object type. Prisma requires an object type that enforces at least one attribute present in case the object exists.
-
-##### Example
-```typescript:example/Schema.ts [7]
 import {
   arg, inputObjectType, makeSchema, nonNull, objectType,
 } from 'nexus'
@@ -52,7 +42,7 @@ const Foo = objectType({
       },
       resolve: async (_parent, args, ctx, _info) => {
         const barList = await ctx.prisma.bar.findMany({
-          cursor2: prismifyCursor(args.cursor),
+          cursor: prismifyCursor(args.cursor),
           where: prismify(args.where),
         })
         return barList
@@ -79,5 +69,3 @@ export const schema = makeSchema({
     export: 'Context',
   },
 })
-
-```
