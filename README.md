@@ -1,3 +1,5 @@
+![npm](https://img.shields.io/npm/v/@txo/nexus-prisma)
+![codecov](https://img.shields.io/codecov/c/github/technology-studio/nexus-prisma)
 # Nexus prisma #
 
 Collection of utils for integration between nexus and prisma.
