@@ -16,7 +16,7 @@
   "license": "MIT",
   "private": false,
   "scripts": {
-    "generate:example": "yarn prisma generate --schema=./sample/prisma/schema.prisma && ts-node --transpile-only sample/Schema",
+    "generate:example": "yarn prisma generate --schema=./example/prisma/schema.prisma && ts-node --transpile-only example/Schema",
     "build": "yarn build:clean && yarn build:lib",
     "build:clean": "yarn rimraf lib",
     "build:lib": "yarn tsc",
