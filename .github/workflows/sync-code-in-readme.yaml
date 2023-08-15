@@ -20,6 +20,6 @@ jobs:
         with:
           markdown: "README.md"
           token: ${{ secrets.GITHUB_TOKEN }}
-          message: "synchronizing Readme"
+          message: "chore: synchronizing Readme"
           silent: true
 
