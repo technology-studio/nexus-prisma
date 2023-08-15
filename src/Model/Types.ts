@@ -10,8 +10,8 @@ export type NonNullIfUndefinedAndNull<TYPE> = undefined | null extends TYPE
     : TYPE
   : TYPE
 
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-export type Prismify<TYPE> = TYPE extends (...args: any[]) => any
+export type Prismify<TYPE> = NonNullIfUndefinedAndNull<
+TYPE extends (...args: unknown[]) => unknown
   ? TYPE
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   : TYPE extends any[]
@@ -20,6 +20,7 @@ export type Prismify<TYPE> = TYPE extends (...args: any[]) => any
     : TYPE extends object
       ? PrismifyObject<TYPE>
       : TYPE
+>
 
 export interface PrismifyArray<TYPE> extends Array<Prismify<NonNullIfUndefinedAndNull<TYPE>>> {}
 
