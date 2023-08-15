@@ -1,0 +1,22 @@
+name: Embed code in README
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  embed-code:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          persist-credentials: false
+          fetch-depth: 0
+      - uses: technology-studio-forks/markdown-embed-code@v1.1.4
+        with:
+          markdown: "README.md"
+          token: ${{ secrets.GITHUB_TOKEN }}
+          message: "chore: synchronizing Readme"
+          silent: true
+

@@ -5,14 +5,22 @@
 **/
 
 import { atLeastOne } from '@txo/types'
+import { type AtLeastOne } from '@txo/types'
 
-import type { Prismify } from '../Model/Types'
+import type {
+  Prismify, PrismifyObject,
+} from '../Model/Types'
 
 export const prismify = <VALUE>(value: VALUE): Prismify<VALUE> => (
   value as Prismify<VALUE>
 )
 
 // eslint-disable-next-line @typescript-eslint/ban-types
-export const prismifyCursor = <VALUE extends object>(value: VALUE): Prismify<VALUE> => (
-  atLeastOne(prismify(value))
+export const prismifyObject = <VALUE extends object>(value: VALUE | null | undefined): PrismifyObject<VALUE> => (
+  value as PrismifyObject<VALUE>
+)
+
+// eslint-disable-next-line @typescript-eslint/ban-types
+export const prismifyCursor = <VALUE extends object>(value: VALUE | undefined | null): AtLeastOne<PrismifyObject<VALUE>> | undefined => (
+  atLeastOne(prismifyObject(value))
 )
