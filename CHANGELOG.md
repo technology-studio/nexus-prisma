@@ -1,3 +1,10 @@
+## [2.0.1](https://github.com/technology-studio/nexus-prisma/compare/v2.0.0...v2.0.1) (2023-08-30)
+
+
+### Documentation
+
+* update readme with mapping capabilities ([#37](https://github.com/technology-studio/nexus-prisma/issues/37)) ([84730af](https://github.com/technology-studio/nexus-prisma/commit/84730afa7e50747df94b0983eef5b9c258211419))
+
 ## [2.0.0](https://github.com/technology-studio/nexus-prisma/compare/v1.1.1...v2.0.0) (2023-08-30)
 
 
