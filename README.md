@@ -12,7 +12,7 @@ it supports specify
 * key renaming - if the key in your outer schema is different from in your internal prisma schema,
 * value mapping - if the value in your outer schema needs to be mapped to a different structure required by internal prisma schema
 
- ##### Example
+##### Example
 
 It shows how to do mapping if you internally support soft deletions and all unique keys are composed of the deleted attribute.
 
@@ -143,13 +143,13 @@ const Foo = objectType({
         }),
       },
       resolve: async (_parent, args, ctx, _info) => {
-        const mapifiedArgs = prismify(args, {
+        const prismifiedArgs = prismify(args, {
           cursor: {
             value: (cursor) => atLeastOne(cursor),
           },
         })
         const barList = await ctx.prisma.bar.findMany({
-          ...mapifiedArgs,
+          ...prismifiedArgs,
         })
         return barList
       },
