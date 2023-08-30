@@ -101,13 +101,13 @@ const Foo = objectType({
         }),
       },
       resolve: async (_parent, args, ctx, _info) => {
-        const mapifiedArgs = prismify(args, {
+        const prismifiedArgs = prismify(args, {
           cursor: {
             value: (cursor) => atLeastOne(cursor),
           },
         })
         const barList = await ctx.prisma.bar.findMany({
-          ...mapifiedArgs,
+          ...prismifiedArgs,
         })
         return barList
       },
