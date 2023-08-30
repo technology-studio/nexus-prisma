@@ -6,13 +6,15 @@ Collection of utils for integration between nexus and prisma.
 
 ##### `prismify`
 
-Will deeply remove null types on attributes that are both undefined or null. That ensures a temporary workaround until graphql starts differentiating between optional and nullable types.
+Will deeply remove null types on attributes that are both undefined or null. That ensures a temporary workaround until graphql differentiates between optional and nullable types.
 
-##### `prismifyCursor`
+it supports specify
+* key renaming - if the key in your outer schema is different from in your internal prisma schema,
+* value mapping - if the value in your outer schema needs to be mapped to a different structure required by internal prisma schema
 
-It will add compatible typing for the cursor input object type. Prisma requires an object type that enforces at least one attribute present in case the object exists.
+ ##### Example
 
-##### Example
+It shows how to do mapping if you internally support soft deletions and all unique keys are composed of the deleted attribute.
 
 `prisma/schema.prisma`
 ```prisma:example/prisma/schema.prisma
