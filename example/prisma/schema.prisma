@@ -9,11 +9,16 @@ generator client {
 
 model Bar {
   id    String  @id @default(uuid())
-  Foo   Foo?    @relation(fields: [fooId], references: [id])
+  foo   Foo?    @relation(fields: [fooId], references: [id])
   fooId String?
 }
 
 model Foo {
   id      String @id @default(uuid())
+  key     String
+  deleted Boolean
+
   barList Bar[]
+
+  @@unique([key, deleted])
 }

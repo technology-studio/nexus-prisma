@@ -4,23 +4,14 @@
  * @Copyright: Technology Studio
 **/
 
-import { atLeastOne } from '@txo/types'
-import { type AtLeastOne } from '@txo/types'
-
 import type {
-  Prismify, PrismifyObject,
+  MapDeclarations,
+  Mapify,
+  Prismify,
 } from '../Model/Types'
 
-export const prismify = <VALUE>(value: VALUE): Prismify<VALUE> => (
-  value as Prismify<VALUE>
-)
+import { mapify } from './Mapify'
 
-// eslint-disable-next-line @typescript-eslint/ban-types
-export const prismifyObject = <VALUE extends object>(value: VALUE | null | undefined): PrismifyObject<VALUE> => (
-  value as PrismifyObject<VALUE>
-)
-
-// eslint-disable-next-line @typescript-eslint/ban-types
-export const prismifyCursor = <VALUE extends object>(value: VALUE | undefined | null): AtLeastOne<PrismifyObject<VALUE>> | undefined => (
-  atLeastOne(prismifyObject(value))
+export const prismify = <TYPE, MAP extends MapDeclarations<Prismify<TYPE>>>(value: TYPE, map?: MAP): Mapify<Prismify<TYPE>, MAP> => (
+  mapify(value as Prismify<TYPE>, map)
 )

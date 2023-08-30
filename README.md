@@ -13,6 +13,11 @@ Will deeply remove null types on attributes that are both undefined or null. Tha
 It will add compatible typing for the cursor input object type. Prisma requires an object type that enforces at least one attribute present in case the object exists.
 
 ##### Example
+
+`prisma/schema.prisma`
+```prisma:example/prisma/schema.prisma
+```
+`schema.ts`
 ```typescript:example/Schema.ts [7]
 import {
   arg, inputObjectType, makeSchema, nonNull, objectType,
