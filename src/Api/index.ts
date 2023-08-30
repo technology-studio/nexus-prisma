@@ -5,3 +5,4 @@
 **/
 
 export * from './Prismify'
+export * from './Mapify'

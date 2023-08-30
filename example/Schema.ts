@@ -8,9 +8,12 @@ import {
   arg, inputObjectType, makeSchema, nonNull, objectType,
 } from 'nexus'
 import { join } from 'path'
+import {
+  atLeastOne,
+} from '@txo/types'
 
 import {
-  prismify, prismifyCursor,
+  prismify,
 } from '../src'
 
 const BarWhereUniqueInput = inputObjectType({
@@ -20,10 +23,67 @@ const BarWhereUniqueInput = inputObjectType({
   },
 })
 
+const BarUpdateOneWithoutBarListNestedInput = inputObjectType({
+  name: 'BarUpdateOneWithoutBarListNestedInput',
+  definition (t) {
+    t.field('connect', { type: 'FooWhereUniqueInput' })
+  },
+})
+const BarUpdateInput = inputObjectType({
+  name: 'BarUpdateInput',
+  definition (t) {
+    t.field('foo', { type: 'BarUpdateOneWithoutBarListNestedInput' })
+  },
+})
+
+const FooWhereUniqueInput = inputObjectType({
+  name: 'FooWhereUniqueInput',
+  definition (t) {
+    t.nullable.id('id')
+    t.nullable.id('key')
+  },
+})
+
+const whereUniqueInputMapper = {
+  key: {
+    key: 'key_deleted' as const,
+    value: (key: string | undefined | null) => key == null
+      ? undefined
+      : ({
+          key,
+          deleted: false,
+        }),
+  },
+}
+
 const Bar = objectType({
   name: 'Bar',
   definition (t) {
     t.id('id')
+    t.field('update', {
+      type: 'Bar',
+      args: {
+        data: nonNull(arg({ type: 'BarUpdateInput' })),
+      },
+      resolve: async (_parent, args, ctx, _info) => {
+        const prismifiedArgs = prismify(args, {
+          data: {
+            foo: {
+              connect: {
+                value: (connect) => atLeastOne(prismify(connect, whereUniqueInputMapper)),
+              },
+            },
+          },
+        })
+        const updatedBar = await ctx.prisma.bar.update({
+          ...prismifiedArgs,
+          where: {
+            id: '1',
+          },
+        })
+        return updatedBar
+      },
+    })
   },
 })
 
@@ -41,9 +101,13 @@ const Foo = objectType({
         }),
       },
       resolve: async (_parent, args, ctx, _info) => {
+        const mapifiedArgs = prismify(args, {
+          cursor: {
+            value: (cursor) => atLeastOne(cursor),
+          },
+        })
         const barList = await ctx.prisma.bar.findMany({
-          cursor: prismifyCursor(args.cursor),
-          where: prismify(args.where),
+          ...mapifiedArgs,
         })
         return barList
       },
@@ -58,7 +122,10 @@ export const schema = makeSchema({
   types: [
     Bar,
     BarWhereUniqueInput,
+    BarUpdateOneWithoutBarListNestedInput,
+    BarUpdateInput,
     Foo,
+    FooWhereUniqueInput,
   ],
   outputs: {
     schema: join(__dirname, '../generated', 'schema.graphql'),
