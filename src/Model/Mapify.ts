@@ -20,9 +20,9 @@ export type MapValueDeclaration<VALUE> = {
 export type MapDeclarations<TYPE, DEFAULT=MapDeclaration<TYPE>> = TYPE extends IsFunction<TYPE>
   ? never
   : TYPE extends IsArray<TYPE>
-    ? MapDeclarationsArray<TYPE>
+    ? MapDeclarationsArray<TYPE> | DEFAULT
     : TYPE extends IsPlainObject<TYPE>
-      ? MapDeclarationsObject<TYPE>
+      ? MapDeclarationsObject<TYPE> | DEFAULT
       : DEFAULT
 
 export type MapDeclarationsArray<TYPE> = TYPE extends (infer ITEM_TYPE)[]

@@ -52,6 +52,34 @@ describe('Mapify Utility Type Tests', () => {
     expect(mapify(data, mapping)).toEqual({ a: '1', b: 'text' })
   })
 
+  it('should handle simple object with object value transformation', () => {
+    type Nested = { a: { b: { c: string } } }
+    type MapDec = { a: { b: { value: (b: { c: string }) => { c: number } } } }
+    type Expected = { a: { b: { c: number } } }
+    type Mapped = Mapify<Nested, MapDec>
+    type SuccessResult = Exact<Mapped, Expected>
+    const successResult: SuccessResult = 'exact-match'
+    expect(successResult).toBe('exact-match')
+
+    const data: Nested = { a: { b: { c: 'string' } } }
+    const mapping: MapDec = { a: { b: { value: (b) => ({ c: 1 }) } } }
+    expect(mapify(data, mapping)).toEqual({ a: { b: { c: 1 } } })
+  })
+
+  it('should handle simple object with array value transformation', () => {
+    type Nested = { a: { b: string [] } }
+    type MapDec = { a: { b: { value: (b: string[]) => number[] } } }
+    type Expected = { a: { b: number[] } }
+    type Mapped = Mapify<Nested, MapDec>
+    type SuccessResult = Exact<Mapped, Expected>
+    const successResult: SuccessResult = 'exact-match'
+    expect(successResult).toBe('exact-match')
+
+    const data: Nested = { a: { b: ['string'] } }
+    const mapping: MapDec = { a: { b: { value: () => [1] } } }
+    expect(mapify(data, mapping)).toEqual({ a: { b: [1] } })
+  })
+
   it('should handle arrays object with value transformation', () => {
     type Arr = number[]
     type MapDec = ({ value: (n: number) => string })[]
