@@ -1,3 +1,10 @@
+## [2.0.2](https://github.com/technology-studio/nexus-prisma/compare/v2.0.1...v2.0.2) (2023-08-31)
+
+
+### Bug fixes
+
+* allow  mapping of complex type values ([#38](https://github.com/technology-studio/nexus-prisma/issues/38)) ([c2305e2](https://github.com/technology-studio/nexus-prisma/commit/c2305e2280a592ee6a05278dd4108628a7f90333))
+
 ## [2.0.1](https://github.com/technology-studio/nexus-prisma/compare/v2.0.0...v2.0.1) (2023-08-30)
 
 
