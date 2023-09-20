@@ -1,3 +1,10 @@
+## [2.0.3](https://github.com/technology-studio/nexus-prisma/compare/v2.0.2...v2.0.3) (2023-09-20)
+
+
+### Bug fixes
+
+* recreate yarn.lock ([#64](https://github.com/technology-studio/nexus-prisma/issues/64)) ([2635855](https://github.com/technology-studio/nexus-prisma/commit/26358556efb554af0c1b11e314aaac119cff7601))
+
 ## [2.0.2](https://github.com/technology-studio/nexus-prisma/compare/v2.0.1...v2.0.2) (2023-08-31)
 
 
