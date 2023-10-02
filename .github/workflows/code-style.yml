@@ -9,5 +9,15 @@ on:
 
 jobs:
   lint:
-    name: '/'
-    uses: technology-studio/github-workflows/.github/workflows/_code-style.yml@main
+    name: Lint
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v3
+        with:
+          cache: 'yarn'
+          node-version-file: '.nvmrc'
+      - run: yarn install --frozen-lockfile
+      - run: yarn generate:example
+      - run: yarn lint
+      - run: yarn typescript:check
