@@ -42,7 +42,7 @@
   "devDependencies": {
     "@prisma/client": "^5.4.2",
     "@txo-peer-dep/log": "^4.0.2",
-    "@txo/commitlint": "^1.0.2",
+    "@txo/commitlint": "^1.0.3",
     "@txo/log-console": "^3.0.0",
     "@txo/semantic-release": "^1.0.0",
     "@txo/types": "^1.7.0",
