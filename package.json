@@ -29,7 +29,7 @@
     "typescript:check": "tsc --noEmit && tsc --noEmit --project example/tsconfig.json",
     "fixcode": "eslint . --fix",
     "git-hook": "yarn -s lint-staged",
-    "prepare": "husky install && yarn build",
+    "prepare": "husky install && yarn build && yarn generate:example",
     "print-txo-packages": "yarn list 2> /dev/null|grep @txo|sed 's/.*\\(@txo[^@]*\\)@^*\\([^ ]*\\).*/\\1@\\2/g'|sort|uniq",
     "sanity": "yarn generate:example && yarn lint && yarn build && yarn typescript:check && yarn test --coverage && yarn compare-boilerplate-version && echo 'success'",
     "semantic-release": "semantic-release",
