@@ -12,7 +12,7 @@ describe('Prismify Utility Type Tests', () => {
 
   it('should handle null and undefined', () => {
     type Nullable = number | null | undefined
-    // eslint-disable-next-line no-unused-vars, @typescript-eslint/no-unused-vars
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     const some: Prismify<Nullable> = 1
     type SuccessResult = Exact<Prismify<Nullable>, number | undefined>
     const successResult: SuccessResult = 'exact-match'
