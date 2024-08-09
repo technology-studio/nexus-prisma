@@ -32,9 +32,10 @@
     "git-hook": "yarn -s lint-staged",
     "prepare": "husky && yarn build && yarn generate:example && yarn typescript:check:example",
     "print-txo-packages": "yarn list 2> /dev/null|grep @txo|sed 's/.*\\(@txo[^@]*\\)@^*\\([^ ]*\\).*/\\1@\\2/g'|sort|uniq",
-    "sanity": "yarn generate:example && yarn lint && yarn build && yarn typescript:check && yarn test --coverage && yarn compare-boilerplate-version && echo 'success'",
+    "sanity": "yarn generate:example && yarn lint:ci && yarn build && yarn typescript:check && yarn test --coverage && yarn compare-boilerplate-version && echo 'success'",
     "semantic-release": "semantic-release",
-    "update-boilerplate-version": "./scripts/update-boilerplate-version.sh"
+    "update-boilerplate-version": "./scripts/update-boilerplate-version.sh",
+    "lint:ci": "yarn lint"
   },
   "engines": {
     "node": ">=18.0.0"
