@@ -35,7 +35,8 @@
     "sanity": "yarn generate:example && yarn lint:ci && yarn build && yarn typescript:check && yarn test --coverage && yarn compare-boilerplate-version && echo 'success'",
     "semantic-release": "semantic-release",
     "update-boilerplate-version": "./scripts/update-boilerplate-version.sh",
-    "lint:ci": "yarn lint"
+    "lint:ci": "yarn lint",
+    "type-check": "tsc --noEmit"
   },
   "engines": {
     "node": ">=18.0.0"
