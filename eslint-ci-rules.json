@@ -1,0 +1,17 @@
+[
+  "@typescript-eslint/no-import-type-side-effects",
+  "eslint-comments/require-description",
+  "@stylistic/space-before-function-paren",
+  "@stylistic/arrow-parens",
+  "@stylistic/operator-linebreak",
+  "@typescript-eslint/no-unnecessary-type-parameters",
+  "complexity",
+  "@typescript-eslint/no-unsafe-type-assertion",
+  "@typescript-eslint/no-magic-numbers",
+  "@typescript-eslint/no-unnecessary-condition",
+  "guard-for-in",
+  "@typescript-eslint/prefer-destructuring",
+  "@stylistic/type-generic-spacing",
+  "@typescript-eslint/consistent-indexed-object-style",
+  "@typescript-eslint/consistent-type-exports"
+]

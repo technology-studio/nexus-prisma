@@ -4,7 +4,7 @@
  * @Copyright: Technology Studio
  */
 
-import { type Exact } from '@txo/types'
+import type { Exact } from '@txo/types'
 
 import {
   type Mapify, mapify,
@@ -14,8 +14,7 @@ describe('Mapify Utility Type Tests', () => {
   it('should handle base types', () => {
     type Base = number | string | boolean
 
-    // eslint-disable-next-line @typescript-eslint/ban-types
-    type MapDec = {}
+    type MapDec = object
 
     type SuccessResult = Exact<Mapify<Base, MapDec>, Base>
     const successResult: SuccessResult = 'exact-match'
@@ -62,7 +61,7 @@ describe('Mapify Utility Type Tests', () => {
     expect(successResult).toBe('exact-match')
 
     const data: Nested = { a: { b: { c: 'string' } } }
-    const mapping: MapDec = { a: { b: { value: (b) => ({ c: 1 }) } } }
+    const mapping: MapDec = { a: { b: { value: b => ({ c: 1 }) } } }
     expect(mapify(data, mapping)).toEqual({ a: { b: { c: 1 } } })
   })
 
@@ -102,7 +101,7 @@ describe('Mapify Utility Type Tests', () => {
     expect(successResult).toBe('exact-match')
 
     const data: Arr = [{ a: 1 }, { a: 2 }]
-    const mapping: MapDec = [{ a: { value: (n) => `${n}` } }]
+    const mapping: MapDec = [{ a: { value: n => `${n}` } }]
     expect(mapify(data, mapping)).toEqual([{ a: '1' }, { a: '2' }])
   })
 
@@ -128,7 +127,7 @@ describe('Mapify Utility Type Tests', () => {
     expect(successResult).toBe('exact-match')
 
     const data: ArrOfNullable = ['string1', null, 'string2']
-    const mapping: MapDec = [{ value: (s) => s != null ? s.length : null }]
+    const mapping: MapDec = [{ value: s => s != null ? s.length : null }]
     expect(mapify(data, mapping)).toEqual([7, null, 7])
   })
 
@@ -168,7 +167,7 @@ describe('Mapify Utility Type Tests', () => {
 
     const data: Complex = { a: { b: { c: 'string1', d: [1, 2] } }, e: [[true, null], [false]], extraKey: 'extraValue' }
     const mapping: MapDec = {
-      a: { b: { c: { key: 'x', value: (s) => s != null ? s.length : null } } },
+      a: { b: { c: { key: 'x', value: s => s != null ? s.length : null } } },
       e: [[{ value: (b: boolean | null) => b != null ? b.toString() : null }]],
     }
     const result = mapify(data, mapping)
