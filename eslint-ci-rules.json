@@ -12,6 +12,5 @@
   "guard-for-in",
   "@typescript-eslint/prefer-destructuring",
   "@stylistic/type-generic-spacing",
-  "@typescript-eslint/consistent-indexed-object-style",
   "@typescript-eslint/consistent-type-exports"
 ]
