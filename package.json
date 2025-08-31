@@ -42,7 +42,7 @@
   },
   "dependencies": {},
   "devDependencies": {
-    "@prisma/client": "^5.22.0",
+    "@prisma/client": "^6.15.0",
     "@txo-peer-dep/log": "^4.0.4",
     "@txo/commitlint": "^1.0.24",
     "@txo/log-console": "^3.0.0",
@@ -59,7 +59,7 @@
     "lint-staged": "^16.1.5",
     "nexus": "^1.3.0",
     "npm-check-updates": "^18.0.3",
-    "prisma": "^5.22.0",
+    "prisma": "^6.15.0",
     "rimraf": "^6.0.1",
     "ts-jest": "^29.4.1",
     "ts-node": "^10.9.2",
